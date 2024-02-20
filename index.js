@@ -233,17 +233,14 @@ async function run() {
 //       res.send(result);
 //     });
     
-//     app.get('/apply/:email',verifyToken,async(req,res)=>{
-//       const email=req.params.email 
+    app.get('/cart/:email',async(req,res)=>{
+      const email=req.params.email 
     
-//         const query={email:email}
-//         const options={
-//           projection:{isPending:1}
-//         }
-//         const result=await appliedCollection.findOne(query,options)
-//         res.send(result)
+        const query={email:email}
+        const result=await cartCollection.find(query).toArray()
+        res.send(result)
       
-//     })
+    })
 
 
 // //  admin
