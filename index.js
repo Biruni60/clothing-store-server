@@ -41,6 +41,7 @@ async function run() {
 
     
     const productCollection=client.db("clothingStore").collection("products")
+    const cartCollection=client.db("clothingStore").collection("cart")
     
     
     
@@ -94,6 +95,11 @@ async function run() {
     
     app.get('/products', async (req, res) => {
       const result = await productCollection.find().toArray();
+      res.send(result);
+    });
+
+    app.get('/featuredproducts', async (req, res) => {
+      const result = await productCollection.find().sort({ rating: -1 }).toArray();
       res.send(result);
     });
      
@@ -208,6 +214,11 @@ async function run() {
     app.post('/addproducts', async (req, res) => {
       const item = req.body;
       const result = await productCollection.insertOne(item);
+      res.send(result);
+    });
+    app.post('/addtocart', async (req, res) => {
+      const item = req.body;
+      const result = await cartCollection.insertOne(item);
       res.send(result);
     });
 
