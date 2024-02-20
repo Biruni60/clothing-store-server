@@ -92,10 +92,10 @@ async function run() {
     
 //     //user
     
-//     app.get('/users',verifyToken,verifyAdmin, async (req, res) => {
-//       const result = await userCollection.find().toArray();
-//       res.send(result);
-//     });
+    app.get('/products', async (req, res) => {
+      const result = await productCollection.find().toArray();
+      res.send(result);
+    });
      
 
 //     app.get('/userprofile/:email',verifyToken, async (req, res) => {
@@ -171,13 +171,13 @@ async function run() {
 //       res.send(result);
 //      }); 
 //      //student
-//      app.get('/classdetail/:id', async (req, res) => {
-//       const id = req.params.id;
-//       const query = { _id: new ObjectId(id) }
-//       const result = await classCollection.findOne(query);
+     app.get('/productdetail/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) }
+      const result = await productCollection.findOne(query);
     
-//       res.send(result);
-//     })
+      res.send(result);
+    })
 
 //     app.get('/class-stats/:id', async (req, res) => {
 //       const id = req.params.id;
